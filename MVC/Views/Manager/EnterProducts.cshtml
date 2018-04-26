@@ -1,0 +1,103 @@
+﻿@model networkProj.ViewModel.VM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>ADD PRODUCT PAGE</legend>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addProduct</title>
+</head>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<body>
+    <div>
+        @*@using (Html.BeginForm("addProduct", "Manager", FormMethod.Post))
+        {*@
+        <form id="proAdd">
+            <table>
+                <tr>
+                    <td>Manufacturer:</td>
+                    <td>@Html.TextBoxFor(m => m.product.manufacturer) @Html.ValidationMessageFor(x => x.product.manufacturer)</td>
+                </tr>
+                <tr>
+                    <td>Model:</td>
+                    <td>@Html.TextBoxFor(m => m.product.model) @Html.ValidationMessageFor(x => x.product.model)</td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td>@Html.TextBoxFor(m => m.product.category) @Html.ValidationMessageFor(x => x.product.category)</td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td>@Html.TextBoxFor(m => m.product.price) @Html.ValidationMessageFor(x => x.product.price)</td>
+                </tr>
+                <tr>
+                    <td>Discount:</td>
+                    <td>@Html.TextBoxFor(m => m.product.discount) @Html.ValidationMessageFor(x => x.product.discount)</td>
+                </tr>
+            </table>
+            @*<input id="Submit1" type="submit" value="OK" />*@
+        </form>
+        <input id="Submit1" type="button" value="OK" onclick="SendData()" />
+        @*}*@
+        @*@Html.Partial("DisplayProducts", Model)*@
+
+        <br />
+        <div id="status"></div>
+        <table id="ProductTable">
+            <tr>
+                <td>Manufacturer</td>
+                <td>Model</td>
+                <td>Category</td>
+                <td>Price</td>
+                <td>Discount</td>
+
+            </tr>
+        </table>
+
+        <script language="javascript">
+            $('#status').text("Loading....");
+            $.get("ShowProductsByJson", null, BindData);
+            function BindData(products)
+            {
+                $("#ProductTable").find("tr:gt(0)").remove();
+                var tbl = $("#ProductTable")
+                for (i = 0; i < products.length; i++)
+                {
+                    var newRow = "<tr>" +
+                        "<td>" + products[i].manufacturer + "</td>" +
+                        "<td>" + products[i].model + "</td>" +
+                        "<td>" + products[i].category + "</td>" +
+                        "<td>" + products[i].price + "</td>" +
+                        "<td>" + products[i].discount + "</td>" +
+                        "</tr>"
+                    tbl.append(newRow);
+                }
+                $('#status').text("");
+            }
+
+            function SendData()
+            {
+                $('#status').text("Saving Products. Please wait...");
+                var frmData = $("#proAdd").serialize();
+                $.post("addProduct", frmData, BindData);
+                $('#product_manufacturer').val("");
+                $('#product_model').val("");
+                $('#product_category').val("");
+                $('#product_price').val("");
+                $('#product_discount').val("");
+            }
+        </script>
+                       
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>NEW TIMES - WATCH STORE</legend>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>mainPage</title>
+</head>
+<body>
+    
+    <div>
+        <br /><br /><br />
+        <button id="Button1" type="button" onclick="location.href='@Url.Action("login", "Pages")'">Login</button>
+        <button id="Button2" type="button" onclick="location.href='@Url.Action("regUser", "User")'">Register</button>
+        <button id="Button3" type="button" onclick="location.href='@Url.Action("productsList", "Pages")'">Continue as a guest</button>
+    </div>
+</body>
+</html>
+
+

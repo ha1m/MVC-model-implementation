@@ -1,0 +1,46 @@
+﻿@model networkProj.ViewModel.VM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["username"] != null)
+{
+    <legend>
+        WELLCOME @Session["username"].ToString()
+        <br />
+        OUR PRODUCTS:
+    </legend>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<body>
+    <div> 
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript" language="javascript">
+                alert('@ViewBag.Message');
+            </script>
+        }
+        @Html.Partial("DisplayProducts", Model)
+
+        <form action="addOrderToDB" method="post">
+            <br /><br />
+            <i>Enter Pid(product id) for Making Order:</i> @*@Html.TextBoxFor(m => m.order.pid)*@
+            <input id="Text1" type="text" name="pid" />
+            <br /><br />
+            <input id="Submit1" type="submit" value="submit" />
+        </form>
+
+    </div>
+</body>
+</html>

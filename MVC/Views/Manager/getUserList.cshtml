@@ -1,0 +1,36 @@
+﻿@model networkProj.ViewModel.VM
+@using networkProj.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>WEB SITE USER:</legend>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>getUserList</title>
+</head>
+<body>
+    <div> 
+        <br />
+        <span style="color:blue">Current Users</span>
+        <br />
+        <table>
+            <tr>
+                <td>User Name</td>
+                
+            </tr>
+            @foreach(User obj in Model.users)
+            {
+                <tr>
+                    <td>@obj.usrName</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

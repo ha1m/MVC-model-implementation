@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Session["username"]!=null)
+{
+    <text> Wellcome @Session["username"].ToString()</text>
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>managerOption</title>
+</head>
+<body>
+    <div>
+        <i>MANAGER OPTION PAGE</i>
+        <br /><br />
+        <button id="Button1" type="button" onclick="location.href='@Url.Action("getUserList", "Manager")'">Show User List</button>
+        <button id="Button2" type="button" onclick="location.href='@Url.Action("EnterProducts", "Manager")'">Enter Product</button>
+        <button id="Button3" type="button" onclick="location.href='@Url.Action("DisplayOrders", "Manager")'">Display Orders</button>
+    </div>
+</body>
+</html>

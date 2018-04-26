@@ -1,0 +1,59 @@
+﻿@model networkProj.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>regUser</title>
+</head>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<body>
+    <div>
+        @using (Html.BeginForm("addUser", "User", FormMethod.Post))
+        {
+
+            <fieldset style="width:300px">
+                <legend>REGISTRATION PAGE</legend>
+                <table>
+                    <tr>
+                        <td>@Html.Label("User Name:")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.TextBoxFor(m => m.usrName) @Html.ValidationMessageFor(x => x.usrName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.Label("Password:")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.TextBoxFor(m => m.password) @Html.ValidationMessageFor(x => x.password)</td>
+                    </tr>
+                    <tr>
+                        <td><input id="Submit1" type="submit" value="OK" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+
+
+
+
+
+            @*<i>Fill out the fields below:</i>
+            <br /><br />
+            <i>User Name: </i> @Html.TextBoxFor(m => m.usrName) @Html.ValidationMessageFor(x => x.usrName)
+            <br />
+            <i>Password: </i> @Html.TextBoxFor(m => m.password) @Html.ValidationMessageFor(x => x.password)
+            <br /><br /><br />
+            <input id="Submit1" type="submit" value="OK" />*@
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿@model networkProj.ViewModel.VM
+@using networkProj.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<legend>
+    OUR PRODUCTS:
+</legend>
+
+@Html.Partial("DisplayProducts", Model)
+

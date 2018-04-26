@@ -1,0 +1,11 @@
+﻿@model networkProj.ViewModel.VM
+@using networkProj.Models
+
+<span>
+    @{
+        WebGrid obj = new WebGrid(Model.products);
+        
+    }@obj.GetHtml()
+
+</span>
+
